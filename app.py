@@ -5,9 +5,9 @@ import joblib
 app = Flask(__name__)
 
 # Load model and encoders
-model = joblib.load('/home/divyansh/Desktop/ee/final_prototype/label_encoded_model.pkl')
-input_encoders = joblib.load('/home/divyansh/Desktop/ee/final_prototype/input_label_encoders.pkl')
-output_encoders = joblib.load('/home/divyansh/Desktop/ee/final_prototype/output_label_encoders.pkl')
+model = joblib.load('/home/divyansh/Desktop/ee/label_encoded_model.pkl')
+input_encoders = joblib.load('/home/divyansh/Desktop/ee/input_label_encoders.pkl')
+output_encoders = joblib.load('/home/divyansh/Desktop/ee/output_label_encoders.pkl')
 
 @app.route('/')
 def home():
