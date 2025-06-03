@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Skin Condition Predictor</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; background: #f9f9f9; }
+    h2 { text-align: center; color: #333; }
+    form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+    label, select, button { display: block; width: 100%; margin-bottom: 15px; }
+    button { padding: 10px; background: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .results { background: #e7f3ff; padding: 15px; margin-top: 20px; border-radius: 8px; }
+    .results ul { list-style-type: none; padding-left: 0; }
+    .results li { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Skin Condition Predictor</h2>
+  <form method="POST" action="/predict"> 
+    <label for="condition">Condition</label>
+    <select id="condition" name="Main_Condition" required>
+      <option value="" disabled selected>Select Condition</option>
+      <option value="Acne">Acne</option>
+      <option value="Open Pores">Open Pores</option>
+      <option value="Pigmentation">Pigmentation</option>
+      <option value="Wrinkles">Wrinkles</option>
+      <option value="Tanning">Tanning</option>
+      <option value="Fine Lines">Fine Lines</option>
+      <option value="Hair Scalp Issues">Hair Scalp Issues</option>
+      <option value="Hair Thinning">Hair Thinning</option>
+      <option value="Scalp Issues">Scalp Issues</option>
+    </select>
+
+    <label for="subtype">Subtype</label>
+    <select id="subtype" name="Subtype" required>
+      <option value="" disabled selected>Select Subtype</option>
+      <option value="None">None</option>
+      <option value="Sensitive">Sensitive</option>
+      <option value="Dry">Dry</option>
+      <option value="Oily">Oily</option>
+      <option value="Curly">Curly</option>
+      <option value="Dry Skin">Dry Skin</option>
+      <option value="Straight">Straight</option>
+      <option value="Oily Skin">Oily Skin</option>
+    </select>
+
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if prediction %}
+  <div class="results">
+    <h3>Prediction Results</h3>
+    <ul>
+      {% for key, value in prediction.items() %}
+        <li><strong>{{ key.replace('_', ' ').title() }}:</strong> {{ value }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+  
+</body>
+</html>
